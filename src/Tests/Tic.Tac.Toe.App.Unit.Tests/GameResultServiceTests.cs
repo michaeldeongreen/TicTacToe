@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Tic.Tac.Toe.App.Services;
+using Tic.Tac.Toe.App.Models.Enumerations;
 
 namespace Tic.Tac.Toe.App.Unit.Tests
 {
@@ -24,7 +25,7 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             GameResultService service = new GameResultService(board);
             var results = service.GameResults();
             //then
-            results.IsWinner.Should().BeFalse();
+            results.Type.Should().Be(GameResultType.NoWinner);
         }
 
         [Test]
@@ -39,7 +40,7 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             GameResultService service = new GameResultService(board);
             var results = service.GameResults();
             //then
-            results.IsWinner.Should().BeTrue();
+            results.Type.Should().Be(GameResultType.Winner);
         }
 
         [Test]
@@ -84,7 +85,7 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             GameResultService service = new GameResultService(board);
             var results = service.GameResults();
             //then
-            results.IsWinner.Should().BeTrue();
+            results.Type.Should().Be(GameResultType.Winner);
         }
 
         [Test]
@@ -136,7 +137,7 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             GameResultService service = new GameResultService(board);
             var results = service.GameResults();
             //then
-            results.IsWinner.Should().BeTrue();
+            results.Type.Should().Be(GameResultType.Winner);
         }
 
         [Test]
@@ -187,7 +188,7 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             GameResultService service = new GameResultService(board);
             var results = service.GameResults();
             //then
-            results.IsWinner.Should().BeTrue();
+            results.Type.Should().Be(GameResultType.Winner);
         }
 
         [Test]

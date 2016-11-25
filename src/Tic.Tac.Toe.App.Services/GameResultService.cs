@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tic.Tac.Toe.App.Models;
+using Tic.Tac.Toe.App.Models.Enumerations;
 
 namespace Tic.Tac.Toe.App.Services
 {
@@ -19,18 +20,18 @@ namespace Tic.Tac.Toe.App.Services
         public TicTacToeResult GameResults()
         {
             var verticalResults = Vertical();
-            if (verticalResults.IsWinner)
+            if (verticalResults.Type == GameResultType.Winner)
                 return verticalResults;
 
             var horizontalResults = Horizontal();
-            if (horizontalResults.IsWinner)
+            if (horizontalResults.Type == GameResultType.Winner)
                 return horizontalResults;
 
             var diagonalResults = Diagonal();
-            if (diagonalResults.IsWinner)
+            if (diagonalResults.Type == GameResultType.Winner)
                 return diagonalResults;
 
-            return new TicTacToeResult(false, string.Empty, string.Empty);
+            return new TicTacToeResult(GameResultType.NoWinner, string.Empty, string.Empty);
         }
 
         private TicTacToeResult Vertical()
@@ -45,10 +46,10 @@ namespace Tic.Tac.Toe.App.Services
                 }
                 if (directionResult.IsThereAWinner())
                 {
-                    return new TicTacToeResult(directionResult.IsThereAWinner(),directionResult.Name, directionResult.Coordinates);
+                    return new TicTacToeResult(GameResultType.Winner,directionResult.Name, directionResult.Coordinates);
                 }
             }
-            return new TicTacToeResult(false, string.Empty,string.Empty);
+            return new TicTacToeResult(GameResultType.NoWinner, string.Empty,string.Empty);
         }
 
         private TicTacToeResult Horizontal()
@@ -63,10 +64,10 @@ namespace Tic.Tac.Toe.App.Services
                 }
                 if (directionResult.IsThereAWinner())
                 {
-                    return new TicTacToeResult(directionResult.IsThereAWinner(), directionResult.Name, directionResult.Coordinates);
+                    return new TicTacToeResult(GameResultType.Winner, directionResult.Name, directionResult.Coordinates);
                 }
             }
-            return new TicTacToeResult(false, string.Empty, string.Empty);
+            return new TicTacToeResult(GameResultType.NoWinner, string.Empty, string.Empty);
         }
 
         private TicTacToeResult Diagonal()
@@ -79,7 +80,7 @@ namespace Tic.Tac.Toe.App.Services
             }
             if (diagonal1Result.IsThereAWinner())
             {
-                return new TicTacToeResult(diagonal1Result.IsThereAWinner(), diagonal1Result.Name, diagonal1Result.Coordinates);
+                return new TicTacToeResult(GameResultType.Winner, diagonal1Result.Name, diagonal1Result.Coordinates);
             }
 
             //second 3x3 diagonal
@@ -92,10 +93,10 @@ namespace Tic.Tac.Toe.App.Services
             }
             if (diagonal2Result.IsThereAWinner())
             {
-                return new TicTacToeResult(diagonal2Result.IsThereAWinner(), diagonal2Result.Name, diagonal2Result.Coordinates);
+                return new TicTacToeResult(GameResultType.Winner, diagonal2Result.Name, diagonal2Result.Coordinates);
             }
 
-            return new TicTacToeResult(false, string.Empty, string.Empty);
+            return new TicTacToeResult(GameResultType.NoWinner, string.Empty, string.Empty);
         }
     }
 }
