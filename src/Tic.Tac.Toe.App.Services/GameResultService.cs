@@ -31,7 +31,7 @@ namespace Tic.Tac.Toe.App.Services
             if (diagonalResults.Type == GameResultType.Winner)
                 return diagonalResults;
 
-            return new TicTacToeResult(GameResultType.NoWinner, string.Empty, string.Empty);
+            return Deadlock();
         }
 
         private TicTacToeResult Vertical()
@@ -97,6 +97,23 @@ namespace Tic.Tac.Toe.App.Services
             }
 
             return new TicTacToeResult(GameResultType.NoWinner, string.Empty, string.Empty);
+        }
+
+        private TicTacToeResult Deadlock()
+        {
+            int coordinatesChosen = 0;
+            for (int row = 0; row <= 2; row++)
+            {
+                for (int column = 0; column <= 2; column++)
+                {
+                    if (_board[row, column] == "O" || _board[row, column] == "X")
+                        coordinatesChosen++;
+                }
+            }
+            if (coordinatesChosen == 9)
+                return new TicTacToeResult(GameResultType.Deadlock, string.Empty, string.Empty);
+            else
+                return new TicTacToeResult(GameResultType.NoWinner, string.Empty, string.Empty);
         }
     }
 }

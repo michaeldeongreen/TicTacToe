@@ -223,5 +223,26 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             //then
             results.WinningCoordinates.Should().Be("[0,2] [1,1] [2,0]");
         }
+
+        [Test]
+        public void game_result_service_can_set_deadlock_test()
+        {
+            //given
+            string[,] board = new string[3, 3];
+            board[0, 0] = "X";
+            board[0, 1] = "O";
+            board[0, 2] = "X";
+            board[1, 0] = "O";
+            board[1, 1] = "X";
+            board[1, 2] = "O";
+            board[2, 0] = "O";
+            board[2, 1] = "X";
+            board[2, 2] = "O";
+            //when
+            GameResultService service = new GameResultService(board);
+            var results = service.GameResults();
+            //then
+            results.Type.Should().Be(GameResultType.Deadlock);
+        }
     }
 }
