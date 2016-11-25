@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DirectionResult.cs" />
+    <Compile Include="Enumerations.cs" />
     <Compile Include="GameResultService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
