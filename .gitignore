@@ -1,0 +1,10 @@
+.vs
+/src/packages
+/src/Tests/Tic.Tac.Toe.App.Unit.Tests/bin
+/src/Tests/Tic.Tac.Toe.App.Unit.Tests/obj
+/src/Tic.Tac.Toe.App/bin
+/src/Tic.Tac.Toe.App/obj
+/src/Tic.Tac.Toe.App.Models/bin
+/src/Tic.Tac.Toe.App.Models/obj
+/src/Tic.Tac.Toe.App.Services/bin
+/src/Tic.Tac.Toe.App.Services/obj
