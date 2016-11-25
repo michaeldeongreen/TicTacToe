@@ -35,8 +35,6 @@ namespace Tic.Tac.Toe.App
             else
                 Console.WriteLine("No Winner for Board 2");
 
-
-            //example 3
             Console.Read();
         }
     }
