@@ -12,13 +12,14 @@ namespace Tic.Tac.Toe.App
     {
         static void Main(string[] args)
         {
+            GameResultService gameResultService = new GameResultService();
+
             //example 1 winner
             string[,] board1 = new string[3, 3];
             board1[0, 0] = "X";
             board1[1, 0] = "X";
             board1[2, 0] = "X";
-            GameResultService service1 = new GameResultService(board1);
-            var results1 = service1.GameResults();
+            var results1 = gameResultService.GameStatus(board1);
             Console.WriteLine(string.Format("Board 1 Status: {0}.",results1.Status));
 
             //example 2 no winner
@@ -26,8 +27,7 @@ namespace Tic.Tac.Toe.App
             board2[0, 0] = "X";
             board2[1, 0] = "O";
             board2[2, 0] = "X";
-            GameResultService service2 = new GameResultService(board2);
-            var results2 = service2.GameResults();
+            var results2 = gameResultService.GameStatus(board2);
             Console.WriteLine(string.Format("Board 2 Status: {0}.", results2.Status));
 
             //example 3 deadlock
@@ -41,8 +41,7 @@ namespace Tic.Tac.Toe.App
             board3[2, 0] = "O";
             board3[2, 1] = "X";
             board3[2, 2] = "O";
-            GameResultService service3 = new GameResultService(board3);
-            var results3 = service3.GameResults();
+            var results3 = gameResultService.GameStatus(board3);
             Console.WriteLine(string.Format("Board 3 Status: {0}.", results3.Status));
 
             Console.Read();

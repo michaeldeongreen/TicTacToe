@@ -22,8 +22,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[1, 0] = "O";
             board[2, 0] = "X";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.Type.Should().Be(GameResultType.NoWinner);
         }
@@ -37,8 +37,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[1, 0] = "X";
             board[2, 0] = "X";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.Type.Should().Be(GameResultType.Winner);
         }
@@ -52,8 +52,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[1, 1] = "O";
             board[2, 1] = "O";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.WinnerName.Should().Be("O");
         }
@@ -67,8 +67,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[1, 2] = "O";
             board[2, 2] = "O";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.WinningCoordinates.Should().Be("[0,2] [1,2] [2,2]");
         }
@@ -82,8 +82,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[0, 1] = "X";
             board[0, 2] = "X";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.Type.Should().Be(GameResultType.Winner);
         }
@@ -101,8 +101,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[2, 2] = "X";
             board[2, 1] = "O";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.WinnerName.Should().Be("X");
         }
@@ -119,8 +119,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[0, 0] = "X";
             board[1, 2] = "X";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.WinningCoordinates.Should().Be("[2,0] [2,1] [2,2]");
         }
@@ -134,8 +134,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[1, 1] = "X";
             board[2, 2] = "X";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.Type.Should().Be(GameResultType.Winner);
         }
@@ -152,8 +152,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[0, 1] = "O";
             board[2, 1] = "O";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.WinnerName.Should().Be("X");
         }
@@ -170,8 +170,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[2, 1] = "X";
             board[1, 2] = "X";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.WinningCoordinates.Should().Be("[0,0] [1,1] [2,2]");
         }
@@ -185,8 +185,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[1, 1] = "O";
             board[2, 0] = "O";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.Type.Should().Be(GameResultType.Winner);
         }
@@ -200,8 +200,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[1, 1] = "X";
             board[2, 0] = "X";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.WinnerName.Should().Be("X");
         }
@@ -218,8 +218,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[2, 1] = "X";
             board[1, 2] = "X";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.WinningCoordinates.Should().Be("[0,2] [1,1] [2,0]");
         }
@@ -239,8 +239,8 @@ namespace Tic.Tac.Toe.App.Unit.Tests
             board[2, 1] = "X";
             board[2, 2] = "O";
             //when
-            GameResultService service = new GameResultService(board);
-            var results = service.GameResults();
+            GameResultService service = new GameResultService();
+            var results = service.GameStatus(board);
             //then
             results.Type.Should().Be(GameResultType.Deadlock);
         }

@@ -12,13 +12,10 @@ namespace Tic.Tac.Toe.App.Services
     {
         private string[,] _board;
 
-        public GameResultService(string[,] board)
+        public TicTacToeResult GameStatus(string[,] board)
         {
             _board = board;
-        }
 
-        public TicTacToeResult GameResults()
-        {
             var verticalResults = Vertical();
             if (verticalResults.Type == GameResultType.Winner)
                 return verticalResults;
